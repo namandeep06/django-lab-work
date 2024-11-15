@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block body_block %}
+    <h2>You Can Place Your Order Here</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Order</button>
+    </form>
+{% endblock %}

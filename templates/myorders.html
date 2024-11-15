@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block body_block %}
+    <h2>My Orders</h2>
+
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+                <li>
+                    {{ order.quantity }} x {{ order.item.name }} - {{ order.get_status_display }}
+                    (Last updated: {{ order.last_updated }})
+                    <br>
+                    Total Price: ${{ order.total_price }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>{{ message }}</p>
+    {% endif %}
+{% endblock %}

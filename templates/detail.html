@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    <h2>Items in {{ selected_type.name }}</h2>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.name }} - ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

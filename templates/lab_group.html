@@ -1,0 +1,22 @@
+<!-- templates/myapp/lab_group.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Group Members</title>
+</head>
+<body>
+    <h1>Lab Group Members</h1>
+    <ul>
+        {% for member in members %}
+            <li>
+                <strong>{{ member.first_name }} {{ member.last_name }}</strong>
+                {% if member.personal_page %}
+                    - <a href="{{ member.personal_page }}" target="_blank">Personal Page</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

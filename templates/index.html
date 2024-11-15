@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block body_block %}
+    <h2>Welcome to Our Grocery Store</h2>
+
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+
+        <h3>Available Item Types</h3>
+        <ul>
+            {% for type in type_list %}
+                <li>{{ type.name }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h3>Session Counter</h3>
+    <p>You have visited this page {{ session_counter }} times in this session.</p>
+
+    {% if request.COOKIES.recent_visit %}
+        <p>Welcome back! You visited recently.</p>
+    {% else %}
+        <p>This is your first visit in a while!</p>
+    {% endif %}
+{% endblock %}

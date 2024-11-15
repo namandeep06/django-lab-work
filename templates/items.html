@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Items List{% endblock %}
+
+{% block myhdg %}Available Items{% endblock %}
+
+{% block body_block %}
+    <h2>Our Available Items</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Interested</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in itemlist %}
+                <tr>
+                    <!-- Link the item name to the interest form for that specific item -->
+                    <td><a href="{% url 'myapp:show_interest' item.id %}">{{ item.name }}</a></td>
+                    <td>${{ item.price }}</td>
+                    <td>{{ item.stock }}</td>
+                    <td>{{ item.interested }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <p><a href="{% url 'myapp:placeorder' %}">Place a New Order</a></p>
+{% endblock %}

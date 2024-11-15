@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}">
+    <title>Online Grocery Store - {% block title %}Welcome!{% endblock %}</title>
+</head>
+<body>
+    <h1>{% block myhdg %}Welcome to our online grocery store{% endblock %}</h1>
+
+    {% block body_block %}{% endblock %}
+
+    <div>
+        <ul>
+            {% if user.is_authenticated %}
+                <li class="hbar1"><a href="{% url 'myapp:about' %}">Find out about this site</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:index' %}">Back to main page</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:items' %}">Items List</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:myorders' %}">My Orders</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:logout' %}">Logout</a></li>
+            {% else %}
+                <li class="hbar1"><a href="{% url 'myapp:signup' %}">Signup</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+</html>
